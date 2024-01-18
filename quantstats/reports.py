@@ -186,7 +186,7 @@ def html(
         dd = _stats.to_drawdown_series(returns)
         dd_info = _stats.drawdown_details(dd).sort_values(
             by="max drawdown", ascending=True
-        )[:10]
+        )[:20]
         dd_info = dd_info[["start", "end", "max drawdown", "days"]]
         dd_info.columns = ["Started", "Recovered", "Drawdown", "Days"]
         tpl = tpl.replace("{{dd_info}}", _html_table(dd_info, False))
@@ -196,7 +196,7 @@ def html(
             dd = _stats.to_drawdown_series(returns[col])
             dd_info = _stats.drawdown_details(dd).sort_values(
                 by="max drawdown", ascending=True
-            )[:10]
+            )[:20]
             dd_info = dd_info[["start", "end", "max drawdown", "days"]]
             dd_info.columns = ["Started", "Recovered", "Drawdown", "Days"]
             dd_info_list.append(_html_table(dd_info, False))
